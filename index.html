@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="author" content="Mirela Cazzolato">
+<title>Plano de Recuperação · Cursos 1 e 2 · MBA IA & Big Data</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ceu-50:  #f3f9fd;
+    --ceu-100: #e4f1fb;
+    --ceu-200: #cbe5f7;
+    --ceu-300: #a6d2f0;
+    --ceu-400: #74b8e6;
+    --azul:    #2377b8;
+    --marinho: #134a78;
+    --tinta:   #12324f;
+    --tinta-2: #48647c;
+    --branco:  #ffffff;
+    --sol:     #f2b33d;
+    --sol-50:  #fff6dd;
+    --sol-tinta: #6b4a00;
+    --raio: 18px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif; background: var(--ceu-50); color: var(--tinta); line-height: 1.6; font-size: 17px; }
+  a { color: var(--azul); }
+  .pagina { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+
+  /* barra superior */
+  .barra { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 18px 0; font-size: 14px; color: var(--tinta-2); }
+  .barra strong { color: var(--marinho); font-weight: 700; }
+  .barra nav { display: flex; gap: 20px; flex-wrap: wrap; }
+  .barra nav a { color: var(--tinta-2); text-decoration: none; font-weight: 600; }
+  .barra nav a:hover { color: var(--azul); }
+
+  /* abertura em duas colunas */
+  .abertura { display: grid; grid-template-columns: 1.25fr 1fr; gap: 28px; align-items: stretch; background: linear-gradient(135deg, var(--ceu-200) 0%, var(--ceu-100) 55%, var(--ceu-50) 100%); border-radius: 28px; padding: 44px; margin-bottom: 28px; }
+  .olho { font-size: 13px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--azul); }
+  .abertura h1 { font-size: clamp(2rem, 4.4vw, 3.1rem); line-height: 1.1; font-weight: 800; letter-spacing: -.02em; color: var(--marinho); margin: 12px 0 16px; }
+  .abertura p.lede { font-size: 18px; color: var(--tinta-2); max-width: 34em; }
+  .abertura .acoes { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 24px; }
+  .botao { display: inline-block; padding: 11px 20px; border-radius: 999px; font-weight: 700; font-size: 15px; text-decoration: none; }
+  .botao.cheio { background: var(--marinho); color: var(--branco); }
+  .botao.vazado { background: var(--branco); color: var(--marinho); }
+  .agenda { background: var(--branco); border-radius: 20px; padding: 22px 24px; display: flex; flex-direction: column; justify-content: center; gap: 4px; }
+  .agenda h2 { font-size: 14px; font-weight: 700; color: var(--tinta-2); margin-bottom: 8px; }
+  .agenda li { list-style: none; display: grid; grid-template-columns: 12px 1fr auto; align-items: center; gap: 12px; padding: 12px 0; border-top: 1px solid var(--ceu-100); }
+  .agenda li:first-of-type { border-top: 0; }
+  .agenda .ponto { width: 12px; height: 12px; border-radius: 50%; background: var(--azul); }
+  .agenda .ponto.sol { background: var(--sol); }
+  .agenda .nome { font-weight: 700; }
+  .agenda .datas { font-weight: 800; color: var(--marinho); font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  section { margin: 0 0 28px; }
+  .titulo-secao { display: flex; align-items: baseline; gap: 14px; margin: 44px 0 16px; }
+  .titulo-secao h2 { font-size: 26px; font-weight: 800; letter-spacing: -.01em; color: var(--marinho); }
+  .titulo-secao span { font-size: 15px; color: var(--tinta-2); }
+
+  /* linha do tempo */
+  .tempo { background: var(--branco); border-radius: var(--raio); padding: 26px 26px 20px; }
+  .trilho { display: grid; grid-template-columns: 12fr 10fr 20fr 10fr 19fr 14fr; gap: 4px; }
+  .trecho { min-width: 0; }
+  .trecho .faixa { height: 16px; border-radius: 8px; background: var(--ceu-100); }
+  .trecho.aberta .faixa { background: var(--azul); }
+  .trecho.respiro .faixa { background: var(--sol); }
+  .trecho .rot { font-size: 13px; color: var(--tinta-2); margin-top: 8px; line-height: 1.35; }
+  .trecho.aberta .rot, .trecho.respiro .rot { color: var(--tinta); }
+  .trecho .rot b { display: block; font-weight: 700; }
+  .tempo .legenda { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--ceu-100); font-size: 13.5px; color: var(--tinta-2); }
+  .tempo .legenda i { display: inline-block; width: 22px; height: 8px; border-radius: 4px; margin-right: 7px; vertical-align: 1px; }
+
+  /* janelas */
+  .janelas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .janela { background: var(--branco); border-radius: var(--raio); padding: 24px; border-top: 6px solid var(--azul); display: flex; flex-direction: column; gap: 6px; }
+  .janela.respiro { background: var(--sol-50); border-top-color: var(--sol); }
+  .janela .quando { font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--azul); }
+  .janela.respiro .quando { color: var(--sol-tinta); }
+  .janela h3 { font-size: 20px; font-weight: 800; }
+  .janela .datas { font-size: 30px; font-weight: 800; color: var(--marinho); letter-spacing: -.02em; line-height: 1.15; font-variant-numeric: tabular-nums; }
+  .janela .meta { font-size: 14px; color: var(--tinta-2); }
+  .janela p { font-size: 15.5px; margin-top: 8px; }
+  .janela .horas { margin-top: auto; padding-top: 14px; font-size: 13.5px; color: var(--tinta-2); border-top: 1px solid rgba(18, 50, 79, .08); }
+
+  /* o que abre */
+  .abre { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .curso { background: var(--branco); border-radius: var(--raio); padding: 24px; }
+  .curso .num { display: inline-block; background: var(--ceu-100); color: var(--marinho); font-weight: 800; font-size: 13px; padding: 3px 12px; border-radius: 999px; margin-bottom: 8px; }
+  .curso h3 { font-size: 18px; font-weight: 700; line-height: 1.3; margin-bottom: 12px; }
+  .curso ul { list-style: none; }
+  .curso li { display: flex; gap: 10px; align-items: baseline; padding: 8px 0; border-top: 1px solid var(--ceu-100); font-size: 15.5px; }
+  .curso li::before { content: ''; flex: 0 0 9px; height: 9px; border-radius: 3px; background: var(--ceu-400); transform: translateY(-1px); }
+  .curso li small { color: var(--tinta-2); font-size: 14px; }
+  .nota { background: var(--ceu-100); border-radius: var(--raio); padding: 18px 22px; margin-top: 16px; font-size: 15.5px; }
+  .nota b { color: var(--marinho); }
+
+  /* roteiro por caso */
+  .roteiro { background: var(--branco); border-radius: var(--raio); overflow: hidden; }
+  .roteiro table { width: 100%; border-collapse: collapse; font-size: 15.5px; }
+  .roteiro th, .roteiro td { padding: 16px 18px; text-align: left; vertical-align: top; }
+  .roteiro thead th { background: var(--ceu-100); font-size: 13.5px; font-weight: 700; color: var(--marinho); }
+  .roteiro thead th small { display: block; font-weight: 500; color: var(--tinta-2); }
+  .roteiro tbody tr + tr td, .roteiro tbody tr + tr th { border-top: 1px solid var(--ceu-100); }
+  .roteiro tbody th { font-weight: 700; width: 24%; }
+  .roteiro td.reserva { color: var(--tinta-2); }
+
+  /* entre janelas + regras lado a lado */
+  .duas { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .caixa { background: var(--branco); border-radius: var(--raio); padding: 26px; }
+  .caixa h3 { font-size: 18px; font-weight: 800; color: var(--marinho); margin-bottom: 10px; }
+  .caixa p { font-size: 15.5px; color: var(--tinta-2); margin-bottom: 12px; }
+  .estudo { list-style: none; }
+  .estudo li { padding: 11px 0; border-top: 1px solid var(--ceu-100); font-size: 15.5px; }
+  .estudo b { display: block; font-size: 13.5px; color: var(--azul); font-weight: 700; }
+  .regras { list-style: none; counter-reset: r; }
+  .regras li { counter-increment: r; display: grid; grid-template-columns: 30px 1fr; gap: 12px; padding: 10px 0; border-top: 1px solid var(--ceu-100); font-size: 15.5px; }
+  .regras li:first-child, .estudo li:first-child { border-top: 0; }
+  .regras li::before { content: counter(r); width: 30px; height: 30px; border-radius: 50%; background: var(--ceu-100); color: var(--marinho); font-weight: 800; font-size: 14px; display: grid; place-items: center; }
+
+  .fecho { background: var(--marinho); color: var(--branco); border-radius: 28px; padding: 40px 44px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 24px; align-items: center; margin-top: 44px; }
+  .fecho h2 { font-size: 26px; font-weight: 800; line-height: 1.2; letter-spacing: -.01em; }
+  .fecho p { color: var(--ceu-200); font-size: 16px; }
+  footer { padding: 26px 0 40px; font-size: 13.5px; color: var(--tinta-2); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+
+  @media (max-width: 860px) {
+    .abertura, .janelas, .abre, .duas, .fecho { grid-template-columns: 1fr; }
+    .abertura { padding: 28px; }
+    .fecho { padding: 30px 28px; }
+    .barra nav { display: none; }
+    .trilho { grid-template-columns: 1fr; gap: 0; }
+    .trecho { display: grid; grid-template-columns: 16px 1fr; gap: 14px; }
+    .trecho .faixa { height: auto; min-height: 44px; width: 16px; border-radius: 0; }
+    .trecho:first-child .faixa { border-radius: 8px 8px 0 0; }
+    .trecho:last-child .faixa { border-radius: 0 0 8px 8px; }
+    .trecho .rot { margin: 0; padding: 10px 0; }
+    .roteiro { overflow-x: auto; }
+    .roteiro table { min-width: 640px; }
+  }
+</style>
+</head>
+<body>
+<div class="pagina">
+
+  <div class="barra">
+    <span><strong>MBA em Inteligência Artificial &amp; Big Data</strong> · Turma 6</span>
+    <nav>
+      <a href="#janelas">Janelas</a>
+      <a href="#abre">O que abre</a>
+      <a href="#roteiro">Seu caso</a>
+      <a href="#regras">Regras</a>
+    </nav>
+  </div>
+
+  <header class="abertura">
+    <div>
+      <p class="olho">Plano de recuperação · Cursos 1 e 2</p>
+      <h1>Três janelas para fechar os Cursos 1 e 2</h1>
+      <p class="lede">Os prazos regulares dos Cursos 1 e 2 já encerraram. Para quem ficou com atividades ou avaliações em aberto, os dois cursos voltam a abrir em três janelas: duas em outubro e novembro e uma terceira, de respiro, durante o recesso de fim de ano.</p>
+      <div class="acoes">
+        <a class="botao cheio" href="#roteiro">Ver o meu caso</a>
+        <a class="botao vazado" href="plano_recuperacao.pdf">Baixar o plano em PDF</a>
+      </div>
+    </div>
+    <aside class="agenda" aria-label="Datas das janelas">
+      <h2>Reserve na agenda</h2>
+      <ul>
+        <li><span class="ponto"></span><span class="nome">Janela 1</span><span class="datas">22 a 31/10</span></li>
+        <li><span class="ponto"></span><span class="nome">Janela 2</span><span class="datas">21 a 30/11</span></li>
+        <li><span class="ponto sol"></span><span class="nome">Janela de respiro</span><span class="datas">20/12 a 02/01</span></li>
+      </ul>
+    </aside>
+  </header>
+
+  <section aria-label="Linha do tempo">
+    <div class="tempo">
+      <div class="trilho">
+        <div class="trecho"><div class="faixa"></div><p class="rot"><b>Até 21/10</b>Estudo do Curso 1</p></div>
+        <div class="trecho aberta"><div class="faixa"></div><p class="rot"><b>Janela 1</b>22 a 31/10</p></div>
+        <div class="trecho"><div class="faixa"></div><p class="rot"><b>01 a 20/11</b>Estudo do Curso 2</p></div>
+        <div class="trecho aberta"><div class="faixa"></div><p class="rot"><b>Janela 2</b>21 a 30/11</p></div>
+        <div class="trecho"><div class="faixa"></div><p class="rot"><b>01 a 19/12</b>Revisão do que faltou</p></div>
+        <div class="trecho respiro"><div class="faixa"></div><p class="rot"><b>Janela de respiro</b>20/12 a 02/01</p></div>
+      </div>
+      <div class="legenda">
+        <span><i style="background:var(--azul)"></i>Atividades abertas</span>
+        <span><i style="background:var(--sol)"></i>Atividades abertas, durante o recesso</span>
+        <span><i style="background:var(--ceu-200)"></i>Atividades fechadas, conteúdo disponível</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="titulo-secao" id="janelas"><h2>As três janelas</h2><span>Em cada uma, os dois cursos abrem inteiros.</span></div>
+  <section class="janelas">
+    <article class="janela">
+      <p class="quando">Outubro</p>
+      <h3>Janela 1</h3>
+      <p class="datas">22 a 31/10</p>
+      <p class="meta">quinta a sábado · 10 dias</p>
+      <p>Primeira chance. Boa para quem só deve a avaliação final ou está com o Curso 1 em aberto.</p>
+      <p class="horas">Abre 22/10 às 00h00 · fecha 31/10 às 23h59</p>
+    </article>
+    <article class="janela">
+      <p class="quando">Novembro</p>
+      <h3>Janela 2</h3>
+      <p class="datas">21 a 30/11</p>
+      <p class="meta">sábado a segunda · 10 dias</p>
+      <p>Segunda chance. Dá tempo de estudar o Curso 2 em novembro e fechar aqui.</p>
+      <p class="horas">Abre 21/11 às 00h00 · fecha 30/11 às 23h59</p>
+    </article>
+    <article class="janela respiro">
+      <p class="quando">Recesso</p>
+      <h3>Janela de respiro</h3>
+      <p class="datas">20/12 a 02/01</p>
+      <p class="meta">domingo a sábado · 14 dias</p>
+      <p>Durante o recesso, sem aulas novas do MBA: tempo para fechar com calma o que tiver ficado.</p>
+      <p class="horas">Abre 20/12 às 00h00 · fecha 02/01 às 23h59</p>
+    </article>
+  </section>
+
+  <div class="titulo-secao" id="abre"><h2>O que fica aberto</h2><span>As mesmas atividades, nas três janelas.</span></div>
+  <section>
+    <div class="abre">
+      <div class="curso">
+        <span class="num">Curso 1 · 30h</span>
+        <h3>Linguagens e Ferramentas/Frameworks (Python e SQL)</h3>
+        <ul>
+          <li><span>Atividade quinzenal 1 <small>· Python</small></span></li>
+          <li><span>Atividade quinzenal 2 <small>· SQL</small></span></li>
+          <li><span>Avaliação final</span></li>
+        </ul>
+      </div>
+      <div class="curso">
+        <span class="num">Curso 2 · 40h</span>
+        <h3>Ciência de Dados, Aprendizado de Máquina e Mineração de Dados</h3>
+        <ul>
+          <li><span>Atividade quinzenal 1 <small>· preparação de dados</small></span></li>
+          <li><span>Atividade quinzenal 2 <small>· aprendizado de máquina</small></span></li>
+          <li><span>Atividade quinzenal 3 <small>· mineração de dados</small></span></li>
+          <li><span>Avaliação final</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="nota"><b>A avaliação final decide.</b> Ela vale 80% da nota do curso. As atividades quinzenais valem 20%, e contam as duas melhores.</p>
+  </section>
+
+  <div class="titulo-secao" id="roteiro"><h2>Qual é o seu caso?</h2><span>Um roteiro para cada situação.</span></div>
+  <section class="roteiro">
+    <table>
+      <thead>
+        <tr>
+          <th>Seu caso</th>
+          <th>Janela 1 <small>22 a 31/10</small></th>
+          <th>Janela 2 <small>21 a 30/11</small></th>
+          <th>Janela de respiro <small>20/12 a 02/01</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">Só falta a avaliação final</th>
+          <td>Faça a avaliação final.</td>
+          <td class="reserva">Reserva, se não der na primeira.</td>
+          <td class="reserva">Reserva.</td>
+        </tr>
+        <tr>
+          <th scope="row">Faltam atividades de um curso</th>
+          <td>Entregue as quinzenais. Se estiver pronto, faça também a final.</td>
+          <td>Faça a avaliação final.</td>
+          <td class="reserva">Reserva para o que sobrar.</td>
+        </tr>
+        <tr>
+          <th scope="row">Deve os dois cursos, ou ainda não começou</th>
+          <td>Feche o Curso 1.</td>
+          <td>Feche o Curso 2.</td>
+          <td class="reserva">Reserva para o que sobrar.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <p class="nota">Não deixe tudo para a janela de respiro: ela existe para fechar o que faltou, não para começar.</p>
+
+  <div class="titulo-secao" id="regras"><h2>Entre as janelas e regras</h2></div>
+  <section class="duas">
+    <div class="caixa">
+      <h3>Entre as janelas</h3>
+      <p>As atividades ficam fechadas, mas as aulas gravadas, os exercícios de fixação, as tutorias gravadas e os fóruns continuam disponíveis. Estude na ordem das quinzenas:</p>
+      <ul class="estudo">
+        <li><b>Até 21/10</b>Curso 1: Quinzena 1 (Python) e Quinzena 2 (SQL).</li>
+        <li><b>01 a 20/11</b>Curso 2: preparação de dados, aprendizado de máquina e mineração de dados.</li>
+        <li><b>01 a 19/12</b>Revisão do que ainda estiver em aberto.</li>
+      </ul>
+    </div>
+    <div class="caixa">
+      <h3>Regras</h3>
+      <ol class="regras">
+        <li><span>Dentro de cada janela, as atividades quinzenais e a avaliação final dos Cursos 1 e 2 ficam abertas ao mesmo tempo.</span></li>
+        <li><span>Não há prorrogação dentro da janela: ao fim do último dia, as atividades fecham.</span></li>
+        <li><span>O MBA não para: o Curso 3 e os seguintes continuam em outubro e novembro. Só a janela de respiro cai em período sem aulas.</span></li>
+        <li><span>Dúvidas de conteúdo vão para o fórum do curso. Dúvidas sobre o plano, para a supervisão acadêmica.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="fecho">
+    <h2>Quem faz a avaliação final quase sempre é aprovado.</h2>
+    <p>O passo que falta é chegar até ela. Reserve as datas na agenda agora e use o fórum sempre que travar.</p>
+  </div>
+
+  <footer>
+    <span>MBA em Inteligência Artificial &amp; Big Data · Supervisão e Coordenação Acadêmica</span>
+    <span>Plano de Recuperação · Cursos 1 e 2 · out/2026 a jan/2027</span>
+  </footer>
+
+</div>
+</body>
+</html>
