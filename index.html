@@ -63,7 +63,7 @@
 
   /* linha do tempo */
   .tempo { background: var(--branco); border-radius: var(--raio); padding: 26px 26px 20px; }
-  .trilho { display: grid; grid-template-columns: 12fr 10fr 20fr 10fr 19fr 14fr; gap: 4px; }
+  .trilho { display: grid; grid-template-columns: 12fr 10fr 20fr 10fr 18fr 24fr; gap: 4px; }
   .trecho { min-width: 0; }
   .trecho .faixa { height: 16px; border-radius: 8px; background: var(--ceu-100); }
   .trecho.aberta .faixa { background: var(--azul); }
@@ -159,7 +159,7 @@
     <div>
       <p class="olho">Plano de recuperação · Cursos 1 e 2</p>
       <h1>Três janelas para fechar os Cursos 1 e 2</h1>
-      <p class="lede">Os prazos regulares dos Cursos 1 e 2 já encerraram. Para quem ficou com atividades ou avaliações em aberto, os dois cursos voltam a abrir em três janelas: duas em outubro e novembro e uma terceira, de respiro, durante o recesso de fim de ano.</p>
+      <p class="lede">Os prazos regulares dos Cursos 1 e 2 já encerraram. Para quem ficou com atividades ou avaliações em aberto, os dois cursos voltam a abrir em três janelas: duas em outubro e novembro e uma terceira, de respiro, que passa pelo recesso de fim de ano.</p>
       <div class="acoes">
         <a class="botao cheio" href="#roteiro">Ver o meu caso</a>
         <a class="botao vazado" href="plano_recuperacao.pdf">Baixar o plano em PDF</a>
@@ -170,7 +170,7 @@
       <ul>
         <li><span class="ponto"></span><span class="nome">Janela 1</span><span class="datas">22 a 31/10</span></li>
         <li><span class="ponto"></span><span class="nome">Janela 2</span><span class="datas">21 a 30/11</span></li>
-        <li><span class="ponto sol"></span><span class="nome">Janela de respiro</span><span class="datas">20/12 a 02/01</span></li>
+        <li><span class="ponto sol"></span><span class="nome">Janela de respiro</span><span class="datas">19/12 a 11/01</span></li>
       </ul>
     </aside>
   </header>
@@ -182,12 +182,12 @@
         <div class="trecho aberta"><div class="faixa"></div><p class="rot"><b>Janela 1</b>22 a 31/10</p></div>
         <div class="trecho"><div class="faixa"></div><p class="rot"><b>01 a 20/11</b>Estudo do Curso 2</p></div>
         <div class="trecho aberta"><div class="faixa"></div><p class="rot"><b>Janela 2</b>21 a 30/11</p></div>
-        <div class="trecho"><div class="faixa"></div><p class="rot"><b>01 a 19/12</b>Revisão do que faltou</p></div>
-        <div class="trecho respiro"><div class="faixa"></div><p class="rot"><b>Janela de respiro</b>20/12 a 02/01</p></div>
+        <div class="trecho"><div class="faixa"></div><p class="rot"><b>01 a 18/12</b>Revisão do que faltou</p></div>
+        <div class="trecho respiro"><div class="faixa"></div><p class="rot"><b>Janela de respiro</b>19/12 a 11/01</p></div>
       </div>
       <div class="legenda">
         <span><i style="background:var(--azul)"></i>Atividades abertas</span>
-        <span><i style="background:var(--sol)"></i>Atividades abertas, durante o recesso</span>
+        <span><i style="background:var(--sol)"></i>Atividades abertas, na janela de respiro</span>
         <span><i style="background:var(--ceu-200)"></i>Atividades fechadas, conteúdo disponível</span>
       </div>
     </div>
@@ -212,12 +212,12 @@
       <p class="horas">Abre 21/11 às 00h00 · fecha 30/11 às 23h59</p>
     </article>
     <article class="janela respiro">
-      <p class="quando">Recesso</p>
+      <p class="quando">Dezembro e janeiro</p>
       <h3>Janela de respiro</h3>
-      <p class="datas">20/12 a 02/01</p>
-      <p class="meta">domingo a sábado · 14 dias</p>
-      <p>Durante o recesso, sem aulas novas do MBA: tempo para fechar com calma o que tiver ficado.</p>
-      <p class="horas">Abre 20/12 às 00h00 · fecha 02/01 às 23h59</p>
+      <p class="datas">19/12 a 11/01</p>
+      <p class="meta">sábado a segunda · 24 dias</p>
+      <p>Inclui o recesso de fim de ano: mais tempo para fechar com calma o que tiver ficado.</p>
+      <p class="horas">Abre 19/12 às 00h00 · fecha 11/01 às 23h59</p>
     </article>
   </section>
 
@@ -255,7 +255,7 @@
           <th>Seu caso</th>
           <th>Janela 1 <small>22 a 31/10</small></th>
           <th>Janela 2 <small>21 a 30/11</small></th>
-          <th>Janela de respiro <small>20/12 a 02/01</small></th>
+          <th>Janela de respiro <small>19/12 a 11/01</small></th>
         </tr>
       </thead>
       <tbody>
@@ -290,7 +290,7 @@
       <ul class="estudo">
         <li><b>Até 21/10</b>Curso 1: Quinzena 1 (Python) e Quinzena 2 (SQL).</li>
         <li><b>01 a 20/11</b>Curso 2: preparação de dados, aprendizado de máquina e mineração de dados.</li>
-        <li><b>01 a 19/12</b>Revisão do que ainda estiver em aberto.</li>
+        <li><b>01 a 18/12</b>Revisão do que ainda estiver em aberto.</li>
       </ul>
     </div>
     <div class="caixa">
@@ -298,7 +298,7 @@
       <ol class="regras">
         <li><span>Dentro de cada janela, as atividades quinzenais e a avaliação final dos Cursos 1 e 2 ficam abertas ao mesmo tempo.</span></li>
         <li><span>Não há prorrogação dentro da janela: ao fim do último dia, as atividades fecham.</span></li>
-        <li><span>O MBA não para: o Curso 3 e os seguintes continuam em outubro e novembro. Só a janela de respiro cai em período sem aulas.</span></li>
+        <li><span>O MBA não para: o Curso 3 e os seguintes continuam durante as janelas. A janela de respiro inclui o recesso de fim de ano.</span></li>
         <li><span>Dúvidas de conteúdo vão para o fórum do curso. Dúvidas sobre o plano, para a supervisão acadêmica.</span></li>
       </ol>
     </div>
@@ -306,7 +306,7 @@
 
   <div class="fecho">
     <h2>Quem faz a avaliação final quase sempre é aprovado.</h2>
-    <p>O passo que falta é chegar até ela. Reserve as datas na agenda agora e use o fórum sempre que travar.</p>
+    <p>O passo que falta é chegar até ela. Reserve as datas na agenda agora e use o fórum sempre que tiver alguma dúvida.</p>
   </div>
 
   <footer>
